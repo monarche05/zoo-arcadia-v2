@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Confirmation de contact{% endblock %}
+
+{% block body %}
+<main class="container d-flex flex-column align-items-center justify-content-center vh-100 col-10 text-center">
+    <h1>Merci pour votre message !</h1>
+    <p>Nous avons bien reçu votre demande et nous vous répondrons dès que possible.</p>
+    <a href="/home" class="cta">Retour accueil</a>
+</main>
+<script src="{{ asset('js/redirectionDelais.js') }}"></script>
+{% endblock %}

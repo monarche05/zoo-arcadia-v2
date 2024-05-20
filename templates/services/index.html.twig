@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+{% block title %}Hello ServicesController!{% endblock %}
+
+{% block body %}
+<header class="jumbotron jumbotron-fluid">
+    {% include "_partials/_nav.html.twig" %}
+    <div class="container h-100 d-flex flex-column justify-content-center align-items-center">
+        <h1 class="display-4 link-cust px-5 py-1 rounded">Services</h1>
+    </div>
+</header>
+<main class="container-fluid p-0">
+    <section class="container-fluid bg-ligth-green text-black p-0 d-flex flex-column align-items-center">
+        <div class="d-flex justify-content-center align-items-center position-relative w-100 mb-5" style="height: 120px;">
+            <div class="bg-img-titre w-100 d-flex justify-content-center align-items-center">
+                <h2 class="p-0 link-cust">Envie de profiter pleinement ?</h2>
+            </div>
+        </div>
+        <div class="d-flex container flex-column align-items-center align-items-md-start">
+            <div class="d-flex flex-column m-0 justify-content-md-center">
+                <div class="d-flex flex-column flex-md-row justify-content-md-center align-items-center">
+                    <p class="text-center col-md-8 mx-2">
+                        Découvrez une expérience complète à Arcadia! De nos visites guidées captivantes 
+                        à notre délicieuse restauration, plongez dans le monde fascinant de la faune. 
+                        Profitez de nos habitats reconstitués, assistez à des spectacles envoûtants et 
+                        participez à des activités éducatives pour toute la famille. Arcadia, où l'aventure 
+                        rencontre la préservation.
+                    </p>
+                    <div id="img-presentation-habitats" class="col-3 m-2"></div>
+                </div>
+                <div class="secondary-cust d-flex flex-column mb-5 mx-5 p-2 justify-content-md-center align-items-center col-md-4 col-lg-2 rounded">
+                    <h3 class="my-2 text-white">Services</h3>
+                    {% for service in Services %}
+                        <a href="#section-{{ service.name }}" class="link-cust">{{ service.name }}</a>
+                    {% endfor %}
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="d-flex justify-content-center align-items-center position-relative w-100 bg-h2-transi1 mb-5" style="height: 120px;">
+        <div class="bg-img-titre2 w-100 d-flex justify-content-center align-items-center">
+            <h2 class="p-0 link-cust">Tout les services</h2>
+        </div>
+    </div>
+    {% for service in Services %}
+    <section id="section-{{ service.name }}" class="container-fluid p-0 d-flex flex-column align-items-center my-5">
+        <h2 class="p-0 link-cust my-4">Service {{ service.name }}</h2>
+        <div class="container d-flex flex-column align-items-center">
+                <div id="carousel" class="carousel slide col-12 col-md-8" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                    {% set image_counter = 0 %}
+                    {% for img in service.img %}
+                        {% set image_counter = image_counter + 1 %}
+                    {% endfor %}
+                    {% if image_counter > 1 %}
+                        {% for i in 0..image_counter-1 %}
+                            <button type="button"
+                                    data-bs-target="#carousel"
+                                    data-bs-slide-to="{{ i }}"
+                                    {% if i == 0 %} class="active" {% endif %}
+                                    aria-current="true"
+                                    aria-label="Slide {{ i + 1 }}">
+                            </button>
+                        {% endfor %}
+                    {% endif %}
+                    </div>
+                    <div class="carousel-inner">
+                    {% set first = true %}
+                    {% for img in service.img %}
+                        <div class="carousel-item {% if first %} active {% endif %}">
+                            <img src="{{ asset('/img/' ~ img) }}" class="d-block carousel-img" alt="...">
+                        </div>
+                        {% set first = false %}
+                    {% endfor %}
+                    </div>
+                    {% if image_counter > 1 %}
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    {% endif %}
+                </div>
+            <p class="m-5 col-10 text-center"> {{ service.description }} </p>
+        </div>
+    </section>
+    {% endfor %}
+</main>
+{% include "_partials/_footer.html.twig" %}
+{% endblock %}

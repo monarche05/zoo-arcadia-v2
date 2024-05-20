@@ -1,0 +1,307 @@
+{% extends 'base.html.twig' %}
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+<header class="jumbotron jumbotron-fluid">
+{% include "_partials/_nav.html.twig" %}
+  <div class="container h-100 d-flex flex-column justify-content-center align-items-center">
+    <h1 class="display-4 text-white">Bienvenue au zoo Arcadia</h1>
+    <p class="lead text-white">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+  </div>
+</header>
+<main class="container-fuild p-0 d-flex flex-column justify-content-center align-items-center bg-ligth-green">
+    <section class="container-fluid p-0 d-flex flex-column justify-content-center align-items-center text-black">
+      {# <div class="position-absolute bg-test w-100 h-100" style="z-index: -10;"></div> #}
+      <div class="d-flex justify-content-center align-items-center position-relative w-100 mb-5" style="height: 120px;">
+        <div class="bg-img-titre w-100 d-flex justify-content-center align-items-center">
+            <h2 class="p-0 link-cust">Qui somme nous?</h2>
+        </div>
+      </div>
+      <div class="container d-flex justify-content-center align-items-center flex-column">
+        <div class="slide-container">
+          <div class="d-flex flex-column flex-md-row align-items-center my-3 row mx-0 slide-element">
+            <div id="img-bg-veterinaire" name="un vétérinaire" class="col-12 col-md-3 p-0"></div>
+            <div id="div-valeur" class="col-12 col-md-5 d-flex justify-content-center flex-column text-center text-md-start">
+              <h3 class="my-2">Nos valeurs</h3>
+              <p>
+                À Arcadia, notre engagement premier réside dans le bien-être et le
+                soin constant de nos animaux. Leur santé et leur bonheur sont notre priorité absolue,
+                assurés par une équipe dévouée et des installations adaptées à leurs besoins
+                spécifiques.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="slide-container">
+          <div class="d-flex flex-column flex-md-row align-items-center justify-content-center my-3 row mx-0 slide-element">
+            <div id="img-bg-cairne" name="un cairne" class="col-12 col-md-2"></div>
+            <div id="div-histoire" class="col-12 col-md-5 d-flex justify-content-center flex-column text-center text-md-start">
+              <h3 class="my-2">Notre histoire</h3>
+              <p>
+                Depuis 1960, Arcadia s'est enraciné près de la légendaire forêt de Brocéliande,
+                en Bretagne, offrant aux visiteurs une immersion exceptionnelle dans le monde
+                de la faune. Notre longue histoire est marquée par la passion pour la préservation
+                des espèces et la sensibilisation à la biodiversité.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="slide-container">
+          <div class="d-flex flex-column flex-md-row align-items-center justify-content-end my-3 row mx-0 slide-element">
+            <div id="img-bg-eco" name="une planête verte" class="col-12 col-md-2"></div>
+            <div id="div-future" class="col-12 col-md-5 d-flex justify-content-center flex-column text-center text-md-start">
+              <h3 class="my-2">Nos projets pour le futur</h3>
+              <p>
+                Arcadia se tourne résolument vers l'avenir écologique. En tant que pionnier de
+                l'énergie durable, notre zoo est entièrement autonome, privilégiant les sources
+                d'énergie renouvelables pour préserver l'environnement et promouvoir un avenir
+                plus vert.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="container-fluid p-0 d-flex flex-column justify-content-center align-items-center primary-cust">
+      <div class="d-flex justify-content-center align-items-center position-relative w-100 py-5 mb-5 bg-h2-transi1" style="height: 120px;">
+        <div class="bg-img-titre2 w-100 d-flex justify-content-center align-items-center">
+            <h2 class="p-0 link-cust">Nos habitats</h2>
+        </div>
+      </div>
+      <div class="container d-flex flex-wrap justify-content-center">
+        <div class="col-md-6 col-lg-5 col-xl-4 d-flex flex-column align-items-center text-center px-3 scale">
+          <div id="img-bg-savane"></div>
+          <h3>La savane</h3>
+          <p>
+            Immergez-vous dans notre habitat de la savane au zoo: lions majestueux, 
+            girafes gracieuses et éléphants imposants vous attendent pour une aventure 
+            inoubliable au cœur de la faune africaine.
+          </p>
+        </div>
+        <div class="col-md-6 col-lg-5 col-xl-4 d-flex flex-column align-items-center text-center px-3 scale">
+          <div id="img-bg-marais"></div>
+          <h3>Le marais</h3>
+          <p>
+            Explorez notre habitat de marais au zoo: des oiseaux exotiques, 
+            des reptiles fascinants et une végétation luxuriante vous transportent 
+            dans un écosystème unique et mystérieux. Une expérience immersive vous attend!
+          </p>
+        </div>
+        <div class="col-md-6 col-lg-5 col-xl-4 d-flex flex-column align-items-center text-center px-3 scale">
+          <div id="img-bg-jungle"></div>
+          <h3>La jungle</h3>
+          <p>
+            Plongez dans notre habitat jungle au zoo: une luxuriante canopée abrite 
+            une incroyable diversité de singes, de serpents colorés et d'oiseaux exotiques. 
+            Explorez ce monde sauvage et découvrez ses secrets cachés au détour de chaque liane. 
+            Une aventure inoubliable vous attend au cœur de la jungle.
+          </p>
+        </div>
+      </div>
+      <a href="/habitats" class="cta m-5">En savoir plus</a>
+    </section>
+    <section class="container-fluid p-0 d-flex flex-column justify-content-center align-items-center flex-wrap w-100">
+      <div class="d-flex justify-content-center align-items-center position-relative w-100 py-5 bg-h2-transi2 mb-5" style="height: 120px;">
+        <div class="bg-img-titre2 w-100 d-flex justify-content-center align-items-center">
+            <h2 class="p-0 link-cust">Nos services</h2>
+        </div>
+      </div>
+      {# <div class="position-absolute bg-test text-black test2" style="z-index: -10;"></div> #}
+      <div class="container d-flex justify-content-center align-items-center flex-column">
+          {% for service in Services %}
+            <div class="secondary-cust d-flex justify-content-between align-items-center flex-column flex-lg-row p-0 w-100 my-2 rounded">
+                <img src="{{ asset ("/img/"~ service.img[0]) }}" alt="nourriture" class="col-12 col-lg-3 img-size rounded">
+                <div class="d-flex justify-content-center align-items-center flex-column w-100 w-md-75 text-center text-lg-start">
+                    <h3 class="my-3">{{ service.name }}</h3>
+                    <p class="p-3 fs-6 m-0">
+                    {{ service.description }}
+                    </p>
+                </div>
+            </div>
+          {% endfor %}
+      </div>
+      <a href="/services" class="cta my-5">En savoir plus</a>
+    </section>
+    <section class="container-fluid p-0 d-flex flex-column justify-content-center align-items-center text-center primary-cust">
+      <div class="d-flex justify-content-center align-items-center position-relative w-100 py-5 bg-h2-transi1 mb-5" style="height: 120px;">
+        <div class="bg-img-titre2 w-100 d-flex justify-content-center align-items-center">
+            <h2 class="p-0 link-cust">Nos animaux</h2>
+        </div>
+      </div>
+      <div class="container d-flex flex-column align-items-center">
+        <p>Une immersion unique parmi nos résidents les plus fascinants! Rencontrez 
+          des espèces exotiques, des prédateurs majestueux aux adorables créatures, 
+          et apprenez leur histoire captivante. Une expérience inoubliable pour toute 
+          la famille!
+        </p>
+        <div class="d-flex justify-content-center row flex-md-row flex-wrap w-100">
+        {% for animal in Animals %}
+          <img 
+          src="{{ asset ("/img/"~ animal.img[0]) }}" 
+          alt="{{animal.name}}" 
+          class="img-size2 col-4 col-md-3 col-xl-2 rounded p-0 m-2 scale"
+          data-bs-toggle="modal"
+          data-bs-target="#{{animal.name}}Modal">
+          {# modal #}
+          <div class="modal fade p-0" id="{{animal.name}}Modal" tabindex="-1" aria-labelledby="{{animal.name}}ModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content secondary-cust">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="{{animal.name}}ModalLabel">{{animal.name}}</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body ">
+                  <div class="d-flex flex-column justify-content-start">
+                    <div>
+                      <div class="container d-flex flex-column align-items-center">
+                        <div id="carousel-{{ animal.id }}" class="carousel slide col-12 " data-bs-ride="carousel">
+                            <div class="carousel-indicators">
+                            {% set image_counter = 0 %}
+                            {% for img in animal.img %}
+                                {% set image_counter = image_counter + 1 %}
+                            {% endfor %}
+                            {% if image_counter > 1 %}
+                                {% for i in 0..image_counter-1 %}
+                                    <button type="button"
+                                            data-bs-target="#carousel-{{ animal.id }}"
+                                            data-bs-slide-to="{{ i }}"
+                                            {% if i == 0 %} class="active" {% endif %}
+                                            aria-current="true"
+                                            aria-label="Slide {{ i + 1 }}">
+                                    </button>
+                                {% endfor %}
+                            {% endif %}
+                            </div>
+                            <div class="carousel-inner">
+                            {% set first = true %}
+                            {% for img in animal.img %}
+                                <div class="carousel-item  {% if first %} active {% endif %}">
+                                    <img src="{{ asset('/img/' ~ img) }}" class="d-block img-size3 col-12 rounded p-0" alt="{{animal.name}}">
+                                </div>
+                                {% set first = false %}
+                            {% endfor %}
+                            </div>
+                            {% if image_counter > 1 %}
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carousel-{{ animal.id }}" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carousel-{{ animal.id }}" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            {% endif %}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="my-3">
+                      <p class="fs-4">Éspèce: {{animal.species}}</p>
+                      {% for rapAnimal in RapAnimals %}
+                        {% if rapAnimal.animal.name == animal.name %}
+                          <p class="fs-5">État: {{ rapAnimal.detail }} </p>
+                          <p class="fs-5">Nourriture: {{ rapAnimal.nourriture }} | {{ rapAnimal.qte }}g</p>
+                        {% endif %}
+                      {% endfor %}
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="cta" data-bs-dismiss="modal">Fermer</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+        </div>
+        <a href="/animaux" class="cta my-5">Voir tout les animaux</a>
+      </div>
+    </section>
+    <section class="container-fluid p-0 d-flex flex-column justify-content-center align-items-center">
+      <div class="d-flex justify-content-center align-items-center position-relative w-100 py-5 bg-h2-transi2" style="height: 120px;">
+        <div class="bg-img-titre2 w-100 d-flex justify-content-center align-items-center">
+            <h2 class="p-0 link-cust">Les avis</h2>
+        </div>
+      </div>
+      <div class="container d-flex flex-column align-items-center">
+        <p class="text-black m-5 text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum. Cras porttitor metus justo, ut fringilla velit fermentum a.</p>
+          {% for item in Avis_clients %}
+          <div class="secondary-cust p-3 col-12 col-md-8 my-2">
+              <p class="fw-bold">{{ item.pseudo }}</p>
+              <div class="container">
+                <p class="bg-white text-black p-3 rounded">{{ item.text }}</p>
+                <div class="d-flex justify-content-between mx-1">
+                  <p class="fst-italic">{{ item.Date|date('d/m/Y') }}</p>
+                  <div>
+                    {% for i in 1..item.note %}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="yellow" class="bi bi-star-fill" viewBox="0 0 16 16">
+                      <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                    </svg>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+          </div>
+          {% endfor %}
+        <a href="#" class="cta mb-5" data-bs-toggle="modal" data-bs-target="#avisModal">Laissez un avis</a>
+      </div>
+    </section>
+</main>
+<!-- Modal -->
+<div class="modal fade" id="avisModal" tabindex="-1" aria-labelledby="avisModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-brown-cust d-flex justify-content-center">
+        <h5 class="modal-title" id="avisModalLabel">Laissez un avis</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-black">
+        <form method="post" id="homeFormModal" class="d-flex flex-column justify-content-center align-items-center">
+          <div class="container d-flex flex-column justify-content-center align-items-start text-black">
+            <label for="homePseudoModal" class="fw-bold">Pseudonyme</label>
+            <input 
+              id="homePseudoModal" 
+              name="{{ field_name(form.pseudo) }}"
+              value="{{ field_value(form.pseudo) }}"
+              type="text" 
+              class="form-control" 
+              placeholder="Tapez votre pseudonyme ici"
+              required
+              >
+            <label for="homeTextModal" class="fw-bold">Avis</label>
+            <textarea 
+              id="homeTextModal" 
+              class="form-control" 
+              name="avis" 
+              aria-label="With textarea" 
+              placeholder="Tapez votre avis ici" 
+              required
+            ></textarea>
+            <label for="homeNoteModal" class="fw-bold">Note</label>
+            <select 
+              name="{{ field_name(form.note) }}" 
+              id="homeNoteModal" 
+              class="form-select w-50"  
+              required
+            >
+              {% for label, value in field_choices(form.note) %}
+                {% if loop.first %}
+                  <option value=null selected disabled>{{ label }}</option>
+                {% else %}
+                  <option value="{{ value }}">{{ label }}</option>
+                {% endif %}
+              {% endfor %}
+            </select>
+            <div id="error-message" style="display: none; color: red;" class="my-3"></div>
+          </div>
+          <div class="modal-footer d-flex justify-content-center">
+            <button type="button" class="cta-modal-close" data-bs-dismiss="modal">Fermer</button>
+            <button id="homeBtnModal" class="cta-modal">Envoyer</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% include "_partials/_footer.html.twig" %}
+<script src="{{ asset('js/formAvis.js') }}"></script>
+{% endblock %}

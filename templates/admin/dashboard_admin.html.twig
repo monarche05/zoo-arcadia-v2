@@ -1,0 +1,144 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block content_title %}Dashboard Administrateur{% endblock %}
+{% block page_actions %}
+    <a class="btn btn-primary" href="#">Some Action</a>
+{% endblock %}
+{% block main %}
+<p>
+</p>
+<div>
+    <h4 class="py-4 px-3 my-3 bg-dark rounded">les plus visités</h4>
+    <div class="d-flex flex-wrap">
+        {# {% set sortedAnimaux = animalCount|sort((a, b) => b.viewCount - a.viewCount) %}
+        {% for animal in sortedAnimaux %}
+            <div class="rounded d-flex flex-column align-items-center" style="width: 7rem;">
+                <img src="{{ '/img/'~ animal.image }}" class="card-img-top" style="height: 80px; width: 80px; object-fit: cover;" alt="{{ animal.name }}">
+                <div class="d-flex flex-column align-items-center">
+                    <p class="fs-4 p-0 m-0">{{ animal.name }}</p>
+                    <p class="fs-5 p-0 m-0">{{ animal.viewCount }}</p>
+                </div>
+            </div>
+        {% endfor %} #}
+    </div>
+</div>
+<div>
+    <h4 class="py-4 px-3 my-3 bg-dark rounded">Activité du zoo</h4>
+    <table class="datagrid" style="--table-hover-cell-bg: none">
+        <thead>
+            <tr>
+                <td>Dernier Rapports vétrinaires</td>
+                <td>Derniére distribution de nourriture</td>
+                <td>Dernier commentaires habitats</td>
+            </tr>
+        </thead>
+        <tbody>
+            <td class="p-2 col-12 col-md-4" style="vertical-align: top;">
+                <div class="card rounded col-12">
+                    <img src="{{ '/img/'~ lastRapAnimals.animal.img[0] }}" class="card-img-top" alt="{{ lastRapAnimals.animal.name }}">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ lastRapAnimals.animal.name }}</h4>
+                        <h5>{{ lastRapAnimals.animal.species }} </h5>
+                        <p class="card-text m-0 fw-bold">État</p>
+                        <p class="card-text m-0">{{ lastRapAnimals.detail }}</p> 
+                        <p class="card-text m-0 fw-bold">Dernière distribution de nourriture</p>
+                        <p class="card-text m-0"> {{ lastRapAnimals.nourriture }} | {{ lastRapAnimals.qte }}g </p>
+                        <p class="card-text m-0 fw-bold">Date</p>
+                        <p class="card-text m-0">{{ lastRapAnimals.date|date('d/m/Y') }}</p>
+                    </div>
+                </div>
+            </td>
+            <td class="p-2 col-12 col-md-4" style="vertical-align: top;">
+                <div class="card rounded col-12">
+                    <img src="{{ '/img/'~ lastRapNourriture.animal.img[0] }}" class="card-img-top" alt="{{ lastRapNourriture.animal.name }}">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ lastRapNourriture.animal.name }}</h4>
+                        <h5>{{ lastRapNourriture.animal.species }} </h5>
+                        <p class="card-text m-0 fw-bold">Nourriture</p>
+                        <p class="card-text m-0">{{ lastRapNourriture.nourriture }}</p> 
+                        <p class="card-text m-0 fw-bold">Quantité en g</p>
+                        <p class="card-text m-0"> {{ lastRapNourriture.qte }}</p>
+                        <p class="card-text m-0 fw-bold">Date</p>
+                        <p class="card-text m-0">{{ lastRapNourriture.date|date('d/m/Y') }} | {{ lastRapNourriture.time|date('H:i:s') }} </p>
+                    </div>
+                </div>
+            </td>
+            <td class="p-2 col-12 col-md-4" style="vertical-align: top;">
+                <div class="card rounded col-12">
+                    <img src="{{ '/img/'~ lastComHabitat.habitat.img[0] }}" class="card-img-top" alt="{{ lastComHabitat.habitat.name }}">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ lastComHabitat.habitat.name }}</h4>
+                        <p class="card-text m-0 fw-bold">Commentaire</p>
+                        <p class="card-text m-0">{{ lastComHabitat.detail }}</p>
+                        <p class="card-text m-0 fw-bold">État</p>
+                        <p class="card-text m-0">{{ lastComHabitat.state }}</p>
+                        <p class="card-text m-0 fw-bold">Amélioration nécessaire</p>
+                        <p class="card-text m-0">{{ lastComHabitat.improvement }}</p>
+                        <p class="card-text m-0 fw-bold">Date</p>
+                        <p class="card-text m-0">{{ lastComHabitat.date|date('d/m/Y') }}</p>
+                    </div>
+                </div>
+            </td>
+        </tbody>
+    </table>
+</div>
+<div>
+    <h4 class="py-4 px-3 my-3 bg-dark rounded">Activité des clients</h4>
+    <table class="datagrid" style="--table-hover-cell-bg: none">
+        <thead>
+            <tr>
+                <td>Dernier avis clients reçu</td>
+                <td>Dernier E-mail clients reçu</td>
+            </tr>
+        </thead>
+        <tbody>
+            <td class="p-2 col-12 col-md-4" style="vertical-align: top;">
+                <p class="d-md-none">Dernier avis clients reçu</p>
+                <div class="card rounded w-100">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ lastAvisClient.pseudo }}</h4>
+                        <p class="card-text m-0 fw-bold">Message</p>
+                        <p class="card-text m-0">{{ lastAvisClient.text }}</p>
+                        <p class="card-text m-0 fw-bold">Date</p>
+                        <p class="card-text m-0">{{ lastAvisClient.date|date('d/m/Y') }}</p>
+                        <p class="card-text m-0 fw-bold">Validation</p>
+                        <div class="card-text m-0">
+                            {% if lastAvisClient.valide == null %}
+                                <div class="d-flex justify-content-start align-items-center">
+                                    <p class="m-0">Non validé</p>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-record-fill text-danger mx-2" viewBox="0 0 16 16">
+                                        <circle cx="8" cy="8" r="8"/>
+                                    </svg>
+                                </div>
+                            {% endif %}
+                            {% if lastAvisClient.valide == true %}
+                                <div class="d-flex justify-content-start align-items-center">
+                                    <p class="m-0">Avis validé</p>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-record-fill text-success mx-2" viewBox="0 0 16 16">
+                                        <circle cx="8" cy="8" r="8"/>
+                                    </svg>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td class="p-2 col-12 col-md-4" style="vertical-align: top;">
+                <p class="d-md-none">Dernier E-mail clients reçu</p>
+                <div class="card rounded w-100">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ lastMailClient.title }}</h4>
+                        <h5>{{ lastMailClient.mail }}</h5>
+                        <p class="card-text m-0 fw-bold">Message</p>
+                        <p class="card-text m-0">{{ lastMailClient.text }}</p>
+                        <p class="card-text m-0 fw-bold">Date</p>
+                        <p class="card-text m-0">{{ lastMailClient.date|date('d/m/Y') }}</p>
+                    </div>
+                </div>
+            </td>
+            
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

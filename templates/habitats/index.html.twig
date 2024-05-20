@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+{% block title %}Habitats{% endblock %}
+
+{% block body %}
+<header class="jumbotron jumbotron-fluid">
+    {% include "_partials/_nav.html.twig" %}
+    <div class="container h-100 d-flex flex-column justify-content-center align-items-center">
+        <h1 class="display-4 text-white">Habitats</h1>
+    </div>
+</header>
+<main class="container-fluid p-0 mb-5">
+    <section class="container-fluid bg-ligth-green text-black p-0 d-flex flex-column align-items-center">
+        <div class="d-flex justify-content-center align-items-center position-relative w-100 mb-5" style="height: 120px;">
+            <div class="bg-img-titre w-100 d-flex justify-content-center align-items-center">
+                <h2 class="p-0 link-cust">Quel sont nos habitats ?</h2>
+            </div>
+        </div>
+        <div class="d-flex container flex-column align-items-center align-items-md-start">
+            <div class="d-flex flex-column m-0 justify-content-md-center">
+                <div class="d-flex flex-column flex-md-row justify-content-md-center align-items-center">
+                    <p class="text-center col-md-8 mx-2">
+                        Explorez nos habitats diversifiés à Arcadia! De la savane africaine à la jungle tropicale, 
+                        chaque environnement est fidèlement recréé pour offrir une immersion totale dans la vie sauvage. 
+                        Rencontrez des espèces exotiques, observez des comportements naturels et découvrez la beauté de 
+                        la biodiversité. Bienvenue dans un monde où la nature règne en maître!
+                    </p>
+                    <div id="img-presentation-habitats" class="col-3 m-2"></div>
+                </div>
+                <div class="secondary-cust d-flex flex-column mb-5 mx-5 p-2 justify-content-md-center align-items-center col-md-4 col-lg-2 rounded">
+                    <h3 class="my-2 text-white ">Habitats</h3>
+                    {% for habitat in Habitats %}
+                        <a href="#{{ habitat.name }}" class="link-cust">{{ habitat.name }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="d-flex justify-content-center align-items-center position-relative w-100 py-5 mb-5 bg-h2-transi1" style="height: 120px;">
+        <div class="bg-img-titre2 w-100 d-flex justify-content-center align-items-center">
+            <h2 class="p-0 link-cust">Liste des habitats</h2>
+        </div>
+    </div>
+    {% for habitat in Habitats %}
+    <section id="{{ habitat.name }}" class="container-fluid p-0 d-flex flex-column justify-content-center align-items-center col-11 col-md-10 col-lg-8">
+        <div class="container p-0 d-flex flex-column justify-content-center mt-5 stroke-secondary-cust rounded-3 shadow">
+            <div class="container  d-flex flex-column flex-md-row justify-content-center align-items-center my-5">
+                <img src="{{ asset ('/img/'~ habitat.img[0]) }}" class="col-4 col-md-3 rounded-circle img-size5" alt="{{habitat.name}}">
+                <div class="col-12 col-md-7 d-flex flex-column justify-content-center align-items-center text-center px-5">
+                    <h3>{{ habitat.name }}</h3>
+                    <p>{{ habitat.description }}</p>
+                </div>
+            </div>
+            <div class="container-fluid d-flex flex-column align-items-center secondary-cust stroke-secondary-cust rounded-3">
+                <h3 class="mt-4 mb-0 text-center">Liste des animaux de l'habitat</h3>
+                <div class="d-flex justify-content-center row flex-md-row m-4">
+                    {% for animal in habitat.animals %}
+                        <img src="{{ asset ('/img/'~ animal.img[0]) }}" class="img-size4 p-0 m-2 col-md-3 rounded" alt="{{animal.name}}">
+                    {% endfor %}
+                  </div>
+            </div>
+        </div>
+    </section>
+    {% endfor %}
+    
+</main>
+{% include "_partials/_footer.html.twig" %}
+
+{% endblock %}

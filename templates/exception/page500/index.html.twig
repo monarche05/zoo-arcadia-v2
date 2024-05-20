@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<main class="container d-flex flex-column align-items-center text-center justify-content-center vh-100">
+    <div class="container col-11 col-md-8">
+        <h1>Erreur Serveur</h1>
+
+        <p>
+        Un problème est survenu. Le serveur n'a pas pu traiter votre demande.
+        Vous pouvez retourner à l'accueil ou nous contacter par mail si le problème persiste
+        </p>
+        <div class="d-flex flex-column flex-sm-row align-items-center justify-content-center">
+            <a href="{{ path('app_home') }}" class="cta mx-2">Retour à l'accueil</a>
+            <a href="{{ path('app_contact') }}" class="cta mx-2">Nous contacter</a>
+        </div>
+    </div>
+</main>
+{% endblock %}
+
