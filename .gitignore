@@ -3,6 +3,8 @@
 .env.prod
 .env.test
 /migrations/
+/node_modules
+/var
 # Cache and logs (Symfony2)
 /app/cache/*
 /app/logs/*
