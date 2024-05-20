@@ -62,14 +62,17 @@ Vous obtiendrez un clé que vous pourrez utiliser pour vôtre variable d'environ
 ## Création de la base de données
 ---
 Pour cela vous devrez effectuer plusieur commande:
+
 ```sh
     php bin/console doctrine:database:create
     mkdir -p C:\your-path\zoo-arcadia-v2\migrations
     php bin/console make:migration
     php bin/console doctrine:migrations:migrate
 ```
+
 Ces commande auront pour but de créer la base de données, de créer le fichier "migrations", créer la première migration, et migré les entités.
 Note: Le path de la commande mkdir doit correspondre au chemin vers vôtre application.
+
 ---
 ### Ajout des DataFixtures
 Pour tester votre base de données et l'application vous pouvez ajouter les DataFixtures à l'aide de la commande:
