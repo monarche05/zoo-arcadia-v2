@@ -1,5 +1,4 @@
-# Nom de l'application
-ZOO ARCADIA v2 Déploiement en local
+# ZOO ARCADIA v2 Déploiement en local
 
 ---
 
@@ -16,6 +15,9 @@ Le site **ZOO ARCADIA v2** est un site d'entrainement pour une évaluation.
 ---
 
 ## Déploiement local
+
+---
+
 ### Prérequis
 - PHP installé sur l'environnement local (version ^8.2)
 - MySQL
@@ -30,26 +32,35 @@ cd zoo-arcadia-v2
 npm install
 composer update
 ```
-- Créez vôtre fichier .env en ajoutant les variables d'environement :
+Créez vôtre fichier .env en ajoutant les variables d'environement:
+
+```sh
 APP_ENV=dev
 APP_SECRET= "Votre clé secret"
 DATABASE_URL="mysql://"user":"mot de passe"@127.0.0.1:3306/"database"?serverVersion=10.11.2-MariaDB&charset=utf8mb4"
 MESSENGER_TRANSPORT_DSN=doctrine://default?auto_setup=0
 REDIS_URL=redis://localhost
+```
+
 Symfony génére automatiquement la clé secret à l'instalation mais dans nôtre cas vous devrais la générer.
 Solution via php:
-- créez un fichier secretGen.php avec le contenue suivant:
+
+créez un fichier secretGen.php avec le contenue suivant:
 ```sh
 <?php
 echo bin2hex(random_bytes(16));
 ```
-- Dans le terminal éxécuter se fichier à l'aide de la commande: 
+
+Dans le terminal éxécuter se fichier à l'aide de la commande: 
 ```sh
 php secretGen.php
 ```
+
 Vous obtiendrez un clé que vous pourrez utiliser pour vôtre variable d'environnement
+
 ---
-### Création de la base de données
+## Création de la base de données
+---
 Pour cela vous devrez effectuer plusieur commande:
 ```sh
     php bin/console doctrine:database:create
@@ -69,7 +80,7 @@ Pour tester votre base de données et l'application vous pouvez ajouter les Data
 ---
 
 ## Finalisation
-Il se peu que vous ayez besoin de relancer webpack-encore pour qu'il refasse les lien correctement à l'aide de cet comande: 
+Il se peu que vous ayez besoin de réinstaller le webpack-encore à l'aide de cet comande: 
 ```sh
     npm install --save @symfony/webpack-encore
 ```
