@@ -2,6 +2,7 @@ when@dev:
     web_profiler:
         toolbar: true
         intercept_redirects: false
+        excluded_ajax_paths: '^/(app(_[\\w]+)?\\.php/)?(api/doc|api/doc\\.json)'
 
     framework:
         profiler:
@@ -15,3 +16,7 @@ when@test:
 
     framework:
         profiler: { collect: false }
+
+web_profiler:
+    toolbar: true
+    intercept_redirects: false

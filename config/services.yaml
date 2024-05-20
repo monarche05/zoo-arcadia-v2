@@ -22,3 +22,19 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+    App\Service\DataService:
+        arguments:
+            $entityManager: '@doctrine.orm.entity_manager'
+        autowire: true
+    
+    App\EventListener\UserListener:
+        arguments:
+            $passwordHasherFactory: '@security.password_hasher_factory'
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }
+    
+   
+    App\Service\RedisService:
+        arguments:
+            - "%env(REDIS_URL)%"
+
