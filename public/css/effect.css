@@ -1,0 +1,44 @@
+/* Slide effect */
+.slide-container {
+    overflow: hidden;
+    width: 100%;
+  }
+  
+  .slide-container > .slide-element {
+    position: relative;
+    left: 100%;
+    animation: slide 1s forwards;
+    animation-delay: 0.2s;
+    animation-play-state: paused;
+  }
+  
+  .slide-container > .slide-element.visible { 
+    animation-play-state: running;
+  }
+  
+  @keyframes slide {
+    to {
+      left: 0;
+    }
+  }
+  .slide-element {
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out; 
+  }
+  
+  .slide-element.visible {
+    opacity: 1;
+  }
+  /* Scale effect */
+  .scale:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    -webkit-transition: -webkit-transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
+  }
+  .scale {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: -webkit-transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
+  }
