@@ -3,3 +3,50 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+    
+security:
+    resource: 
+    path: ../config/packages/security.yaml
+
+app_home:
+    path: /home
+    controller: App\Controller\HomeController::index
+
+app_home_confirmation:
+    path: /home/confirmation
+    controller: App\Controller\HomeController::confirmationAvis
+
+app_contact:
+    path: /contact
+    controller: App\Controller\ContactController::index
+
+app_contact_confirmation:
+    path: /contact/confirmation
+    controller: App\Controller\ContactController::confirmationContact
+
+test_controller_route:
+    path: /test
+    controller: App\Controller\TestController::testAction
+
+app.swagger_ui:
+    path: /api/doc
+    methods: GET
+    defaults: { _controller: nelmio_api_doc.controller.swagger_ui }
+
+app.redocly:
+    path: /api/doc
+    methods: GET
+    defaults: { _controller: nelmio_api_doc.controller.redocly }
+    options:
+        exclude:
+            - '^_profiler'
+            - '^_wdt'
+
+app.swagger:
+    path: /api/doc.json
+    methods: GET
+    defaults: { _controller: nelmio_api_doc.controller.swagger }
+    options:
+        exclude:
+            - '^_profiler'
+            - '^_wdt'

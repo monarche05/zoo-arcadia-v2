@@ -1,0 +1,59 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+{% block content_title %}Dashboard vétérinaire{% endblock %}
+{% block page_actions %}
+<div class="d-flex align-items-start justify-content-center flex-column flex-md-row flew-wrap">
+    <a class="btn btn-primary m-1 p-2 w-100" href="http://127.0.0.1:8000/admin?crudAction=index&crudControllerFqcn=App%5CController%5CAdmin%5CCommentHabitatCrudController">Voir tout les commentaires habitats</a>
+    <a class="btn btn-primary m-1 p-2 w-100" href="http://127.0.0.1:8000/admin?crudAction=index&crudControllerFqcn=App%5CController%5CAdmin%5CRapportAnimalCrudController">Voir tout les rapports vétérinaires</a>
+</div>
+{% endblock %}
+{% block main %}
+    <p class="col-11">
+        Le dashboard vétérinaire offre un aperçu des informations les plus 
+        récentes et cruciales pour les vétérinaires. Ce tableau de bord présente de manière concise 
+        les données les plus pertinentes, permettant aux vétérinaires de rester 
+        informés et réactifs dans leur pratique quotidienne. Chaque élément affiché 
+        reflète les dernières interactions et observations, fournissant ainsi une vue 
+        d'ensemble rapide et efficace de l'état de santé des animaux sous leur responsabilité.
+    </p>
+    <table class="datagrid">
+        <thead>
+            <tr>
+                <td class="fs-4">Dernier rapport vétérinaires</td>
+                <td class="fs-4">Dernier commentaire habitat</td>
+            </tr>
+        </thead>
+        <tbody>
+            <td class="p-2">
+                <div class="card rounded" style="width: 20rem;">
+                    <img src="{{ '/img/'~ lastRapAnimals.animal.img[0] }}" class="card-img-top" alt="{{ lastRapAnimals.animal.name }}">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ lastRapAnimals.animal.name }}</h4>
+                        <h5>{{ lastRapAnimals.animal.species }} </h5>
+                        <p class="card-text m-0 fw-bold">État</p>
+                        <p class="card-text m-0">{{ lastRapAnimals.detail }}</p> 
+                        <p class="card-text m-0 fw-bold">Dernière distribution de nourriture</p>
+                        <p class="card-text m-0"> {{ lastRapAnimals.nourriture }} | {{ lastRapAnimals.qte }}g </p>
+                        <p class="card-text m-0 fw-bold">Date</p>
+                        <p class="card-text m-0">{{ lastRapAnimals.date|date('d/m/Y') }}</p>
+                    </div>
+                </div>
+            </td>
+            <td class="p-2">
+                <div class="card rounded" style="width: 20rem;">
+                    <img src="{{ '/img/'~ lastComHabitat.habitat.img[0] }}" class="card-img-top" alt="{{ lastComHabitat.habitat.name }}">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ lastComHabitat.habitat.name }}</h4>
+                        <p class="card-text m-0 fw-bold">Commentaire</p>
+                        <p class="card-text m-0">{{ lastComHabitat.detail }}</p>
+                        <p class="card-text m-0 fw-bold">État</p>
+                        <p class="card-text m-0">{{ lastComHabitat.state }}</p>
+                        <p class="card-text m-0 fw-bold">Amélioration nécessaire</p>
+                        <p class="card-text m-0">{{ lastComHabitat.improvement }}</p>
+                        <p class="card-text m-0 fw-bold">Date</p>
+                        <p class="card-text m-0">{{ lastComHabitat.date|date('d/m/Y') }}</p>
+                    </div>
+                </div>
+            </td>
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,171 @@
+{% extends 'base.html.twig' %}
+{% block title %}Animaux{% endblock %}
+
+{% block body %}
+<header class="jumbotron jumbotron-fluid">
+    {% include "_partials/_nav.html.twig" %}
+    <div class="container h-100 d-flex flex-column justify-content-center align-items-center">
+        <h1 class="display-4 text-white">Animaux</h1>
+    </div>
+</header>
+<main class="container-fluid p-0 mb-5">
+    <section class="container-fluid bg-ligth-green text-black p-0 d-flex flex-column align-items-center">
+        <div class="d-flex justify-content-center align-items-center position-relative w-100 mb-5" style="height: 120px;">
+            <div class="bg-img-titre w-100 d-flex justify-content-center align-items-center">
+                <h2 class="p-0 link-cust">À la découverte de nos animaux</h2>
+            </div>
+        </div>
+        <div class="d-flex container flex-column align-items-center align-items-md-start">
+            <div class="d-flex flex-column m-0 justify-content-md-center">
+                <div class="d-flex flex-column flex-md-row justify-content-md-center align-items-center">
+                    <p class="text-center col-md-8 mx-2">
+                        Rencontrez nos résidents à plumes, à poils et à écailles à Arcadia! Des félins majestueux aux reptiles fascinants. 
+                        Explorez nos habitats et observez ces créatures dans leur environnement naturel. 
+                        Une expérience immersive vous attend au cœur de la vie sauvage!
+                    </p>
+                    <div id="img-presentation-habitats" class="col-3 m-2"></div>
+                </div>
+                <div class="d-flex flex-column mb-5 mx-5 p-2 justify-content-md-center align-items-lg-center secondary-cust col-md-5 col-lg-4 rounded">
+                    <form class="d-flex flex-column align-items-center align-items-md-start p-3">
+                        <fieldset>
+                            <legend class="text-white">Menu de recherche</legend>
+                            <div class="mb-3 col-12">
+                                <label for="SelectHabitats" class="form-label text-white">Sélectionnez un habitat</label>
+                                <select id="SelectHabitats" class="form-select">
+                                    <option data-habitat-id="all" value="" selected>-- Tout les habitats --</option>
+                                    {% for habitat in Habitats %}
+                                        <option value="{{ habitat.name }}" data-habitat-id="{{ habitat.id }}">{{ habitat.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="d-flex justify-content-center align-items-center position-relative w-100 py-5 mb-5 bg-h2-transi1" style="height: 120px;">
+        <div class="bg-img-titre2 w-100 d-flex justify-content-center align-items-center">
+            <h2 class="p-0 link-cust">Liste des animaux</h2>
+        </div>
+    </div>
+    <section class="animal-section container d-flex justify-content-center flex-wrap">
+        {% for animal in animals %}
+            <div 
+            class="card secondary-cust m-4 text-white scale rounded" 
+            style="width: 18rem;" 
+            data-bs-toggle="modal"
+            data-bs-target="#{{animal.name}}Modal"
+            >
+                <img src="{{ asset ('/img/'~ animal.img[0]) }}" class="card-img-top" alt="{{animal.name}}">
+                <div class="card-body">
+                    <h5 class="card-title link-cust">{{animal.name}}</h5>
+                </div>
+                <div class="card-body bg-ligth-green text-black rounded-bottom">
+                    <p class="m-0 fw-bold">État</p>
+                    {% for rapAnimal in allRapAnimal %}
+                        {% if animal.id == rapAnimal.animal.id%}
+                            <p class="m-0">{{rapAnimal.detail}}</p>
+                        {% endif %}
+                    {% endfor %}
+                    <p class="m-0 fw-bold">Habitat</p>
+                    <p class="mb-1">{{ animal.habitat.name }}</p>
+                    <p class="m-0 fw-bold">Espèce</p>
+                    <p class="m-0">{{animal.species}}</p>
+                </div>
+            </div>   
+        {# modal #}
+          <div class="modal fade p-0" id="{{animal.name}}Modal" tabindex="-1" aria-labelledby="{{animal.name}}ModalLabel" aria-hidden="true" data-animal= "{{animal.name}}">
+            <div class="modal-dialog modal-size my-3 mx-auto" style="max-width:none;">
+              <div class="modal-content secondary-cust">
+                <div class="modal-header d-flex justify-content-center">
+                  <h3 class="modal-title link-cust" id="{{animal.name}}ModalLabel">{{animal.name}}</h3>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body bg-ligth-green text-black">
+                  <div class="d-flex flex-column justify-content-start">
+                    <div>
+                      <div class="container d-flex flex-column align-items-center">
+                        <div id="carousel-{{ animal.id }}" class="carousel slide col-12 " data-bs-ride="carousel">
+                            <div class="carousel-indicators">
+                            {% set image_counter = 0 %}
+                            {% for img in animal.img %}
+                                {% set image_counter = image_counter + 1 %}
+                            {% endfor %}
+                            {% if image_counter > 1 %}
+                                {% for i in 0..image_counter-1 %}
+                                    <button type="button"
+                                            data-bs-target="#carousel-{{ animal.id }}"
+                                            data-bs-slide-to="{{ i }}"
+                                            {% if i == 0 %} class="active" {% endif %}
+                                            aria-current="true"
+                                            aria-label="Slide {{ i + 1 }}">
+                                    </button>
+                                {% endfor %}
+                            {% endif %}
+                            </div>
+                            <div class="carousel-inner">
+                            {% set first = true %}
+                            {% for img in animal.img %}
+                                <div class="carousel-item  {% if first %} active {% endif %}">
+                                    <img src="{{ asset('/img/' ~ img) }}" class="d-block img-size3 col-12 rounded p-0" alt="{{animal.name}}">
+                                </div>
+                                {% set first = false %}
+                            {% endfor %}
+                            </div>
+                            {% if image_counter > 1 %}
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carousel-{{ animal.id }}" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carousel-{{ animal.id }}" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            {% endif %}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="my-3">
+                        <div class="d-flex justify-content-between">
+                            <div class="m-3">
+                                <p class="fs-4 fw-bold m-0">Éspèce</p>
+                                <p class="fs-5 m-0"> {{animal.species}}</p>
+                            </div>
+                            <div class="m-3 text-end">
+                                <p class="fs-4 fw-bold m-0">Habitat</p>
+                                <p class="fs-5 m-0">{{animal.habitat.name}}</p>
+                            </div>
+                        </div>
+                        <div class="m-3">
+                            <p class="fs-4 fw-bold m-0">Description</p>
+                            <p class="fs-5 m-0">{{animal.description}}</p>
+                        </div>
+                      {% for rapAnimal in allRapAnimal %}
+                        {% if rapAnimal.animal.name == animal.name %}
+                        <div class="m-3">
+                          <p class="fs-4 fw-bold m-0">État</p>
+                          <p class="fs-5 m-0">{{ rapAnimal.detail }}</p>
+                        </div>
+                        {% endif %}
+                      {% endfor %}
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer justify-content-center ">
+                  <button type="button" class="cta m-4" data-bs-dismiss="modal">Fermer</button>
+                </div>
+              </div>
+            </div>
+          </div>
+    {# Fin de modal #}
+        {% endfor %}
+
+
+
+    </section>
+</main>
+{% include "_partials/_footer.html.twig" %}
+<script src="{{ asset('js/searchAnimals.js') }}"></script>
+<script src="{{ asset('js/incrementRedis.js') }}"></script>
+{% endblock %}

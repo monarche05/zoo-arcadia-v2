@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+{% block title %}Contact{% endblock %}
+
+{% block body %}
+<header class="jumbotron jumbotron-fluid">
+    {% include "_partials/_nav.html.twig" %}
+    <div class="container h-100 d-flex flex-column justify-content-center align-items-center">
+        <h1 class="display-4 text-white">Contact</h1>
+    </div>
+</header>
+<main>
+    <section class="container-fluid p-0 d-flex flex-column align-items-center">
+        <div class="d-flex justify-content-center align-items-center position-relative w-100 mb-5" style="height: 120px;">
+            <div class="bg-img-titre w-100 d-flex justify-content-center align-items-center">
+                <h2 class="p-0">Comment nous contacter ?</h2>
+            </div>
+        </div>
+        <p class="text-center col-md-8 mx-2">
+            Vous pouvez nous contacter facilement en utilisant notre formulaire de contact. 
+            Remplissez simplement les champs requis avec vos coordonnées et votre message, 
+            puis cliquez sur Envoyer. Nous nous efforcerons de répondre à votre demande dans 
+            les plus brefs délais. N'hésitez pas à nous faire part de vos questions, 
+            commentaires ou préoccupations. Nous sommes là pour vous aider!
+        </p>
+    </section>
+    <section class="my-5">
+        <div class="container d-flex flex-column align-items-center col-11 col-md-8 col-lg-6 rounded secondary-cust ">
+            <h3 class="my-5">Formulaire de contact</h3>
+            <form method="post" id="contactForm" class="d-flex flex-column justify-content-center align-items-center col-12 col-md-10 col-lg-8">
+                <div class="container my-2">
+                    <label for="contactTitre" class="fw-bold">Titre</label>
+                    <input 
+                        id="contactTitre"
+                        name="{{ field_name(form.title) }}"
+                        value="{{ field_value(form.title) }}"
+                        type="text" 
+                        class="form-control" 
+                        placeholder="Tapez votre titre ici"
+                        required>
+                </div>
+                <div class="container my-2">
+                    <label for="contactMail" class="fw-bold">E-mail</label>
+                    <input 
+                        id="contactMail" 
+                        type="email"
+                        name="{{ field_name(form.mail) }}"
+                        value="{{ field_value(form.mail) }}" 
+                        class="form-control" 
+                        placeholder="Tapez votre e-mail ici"
+                        required>
+                </div>
+                <div class="container my-2">
+                    <label for="contactText" class="fw-bold">Message</label>
+                    <textarea 
+                        id="contactText" 
+                        class="form-control" 
+                        name="message" 
+                        aria-label="With textarea" 
+                        placeholder="Tapez votre message ici" 
+                        required
+                        ></textarea>
+                </div>
+                <div id="error-message" class="rounded bg-white p-3 m-2" style="display: none; color: red;" class="my-3"></div>
+                <button id="contactBtn" class="cta my-5 mx-auto">Envoyer</button>
+            </form>
+        </div>
+    </section>
+    {% include "_partials/_footer.html.twig" %}
+</main>
+<script src="{{ asset('js/formContact.js') }}"></script>
+{% endblock %}

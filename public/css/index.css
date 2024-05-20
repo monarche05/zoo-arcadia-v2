@@ -1,0 +1,328 @@
+.primary-cust {background-color:#182D20 ;}
+.primary-color {color:#182D20 ;}
+.secondary-cust {background-color: #35784F;}
+.secondary-color {color: #35784F;}
+.tertiary-cust {background-color: #FFDB58;}
+.tertiary-svg {color: #FFDB58;}
+.bg-cust {background-color: #774E31;}
+.bg-brown-cust {background-color: #774E31;}
+.brown-cust {color: #774E31;}
+.link-cust {
+    color: #FFDB58;
+    text-decoration: none;
+}
+.bg-ligth-green{
+    background-color: #daf5e6;
+}
+.bg-h2-transi1{
+    background: linear-gradient(to bottom, #daf5e6 50%, #182D20 50%);
+}
+.bg-h2-transi2{
+    background: linear-gradient(to bottom, #182D20 50%, #daf5e6 50%);
+}
+.w-10{
+    width: 10%;
+}
+#avis_client_note option{
+    color:black;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: none; /* Pour supprimer la bordure de focus */
+}
+body {
+    background-color:#182D20 ;
+    color: white;
+    padding: 0 !important;
+}
+main {
+    font-family: "Montserrat", sans-serif;
+}
+h1,h2{
+        font-family: "Original Surfer", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+}
+h2 {
+    padding: 80px 0 80px 0;
+}
+p{
+    font-size: 14px;
+}
+@media (min-width: 576px) {
+    p{
+        font-size: 16px;
+    }
+    
+}
+header {
+    background-image: url(/img/pont.jpg);
+    background-position:center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+textarea {
+    resize: none;
+    height: 200px;
+  }
+.cta {
+    width: 450px;
+    height: 60px;
+    background-color:#FFDB58 ;
+    color: #774E31;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    font-weight: bold;
+    margin-top: 40PX;
+}
+.cta-modal {
+    width: 100px;
+    height: 40px;
+    background-color:#FFDB58 ;
+    color: #774E31;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    font-weight: bold;
+    margin-top: 40PX;
+}
+.cta-modal-close {
+    width: 100px;
+    height: 40px;
+    background-color:#757575 ;
+    color: #ffffff;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    font-weight: bold;
+    margin-top: 40PX;
+}
+@media (max-width: 778px) {
+    .cta {
+        width: 250px;
+    }
+}
+
+#img-bg-restauration {background-image: url(/img/food-7556198_1280.jpg);}
+#img-bg-visite {background-image: url(/img/tour-guide.jpg);}
+#img-bg-train {background-image: url(/img/train.jpg);}
+#img-bg-veterinaire {background-image: url(/img/veterinaire.jpg);}
+#img-bg-cairne {background-image: url(/img/cairne.jpg);}
+#img-bg-eco {background-image: url(/img/eco.jpg);}
+#img-bg-savane {background-image: url(/img/savane.jpg);}
+#img-bg-marais {background-image: url(/img/marais.jpg);}
+#img-bg-jungle {background-image: url(/img/jungle.jpg);}
+
+#img-bg-eco,#img-bg-cairne,#img-bg-veterinaire,#img-bg-train,#img-bg-visite,#img-bg-restauration {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 250px;
+    width: 300px;
+}
+#img-bg-eco,#img-bg-cairne,#img-bg-veterinaire {
+    border-radius: 10px;
+}
+#img-ani-1{background-image: url(/img/suricat.jpg);}
+#img-ani-2{background-image: url(/img/elephant.jpg);}
+#img-ani-3{background-image: url(/img/croco.jpg);}
+#img-ani-4{background-image: url(/img/toucan.jpg);}
+#img-ani-5{background-image: url(/img/lion.jpg);}
+#img-ani-6{background-image: url(/img/gorille.jpg);}
+#img-ani-7{background-image: url(/img/tiger.jpg);}
+#img-ani-8{background-image: url(/img/giraff.jpg);}
+
+#img-ani-1,
+#img-ani-2,
+#img-ani-3,
+#img-ani-4,
+#img-ani-5,
+#img-ani-6,
+#img-ani-7,
+#img-ani-8 {
+    width:220px;
+    height: 220px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+}
+#img-presentation-services{
+    background-image: url(/img/presentation.jpg);
+    width:250px;
+    height:250px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+}
+#img-presentation-habitats{
+    background-image: url(/img/planete.jpg);
+    width:250px;
+    height:250px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+
+}
+#img-restauration1{
+    background-image: url(/img/burger.jpg);
+    z-index: 3;
+}
+#img-restauration2{
+    background-image: url(/img/vegan.jpg);
+    z-index: 2;    
+}
+#img-restauration3{
+    background-image: url(/img/restaurant.jpg);
+    z-index: 1;
+}
+
+#img-restauration1,
+#img-restauration2,
+#img-restauration3 {
+    width:450px;
+    height:270px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    box-shadow:rgba(0, 0, 0, 0.5) 5px 10px 10px 0;
+}
+
+#img-bg-savane,#img-bg-marais,#img-bg-jungle {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 250px;
+    width: 250px;
+    border-radius: 50%;
+}
+
+#img-visite {
+    background-image: url(/img/tour-guide.jpg);
+    width:650px;
+    height:370px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+}
+
+#img-train {
+    background-image: url(/img/train.jpg);
+    width:650px;
+    height:370px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+}
+.contener-size{
+    margin: 200px;
+    height: 100px;
+    width: 60%;
+}
+.bg-img-titre{
+    background-image: url(/img/fond-special.png);
+    position: absolute;
+    width:100%;
+    height:120px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 0;
+    
+}
+.bg-img-titre2{
+    background-image: url(/img/fond-special2.png);
+    position: absolute;
+    width:100%;
+    height:120px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 0;
+}
+.stroke-secondary-cust{
+    border: #35784F solid 1px;
+}
+.card-img-top {
+    max-height: 200px;
+    min-height: 200px;
+    width: auto;
+    height: auto;
+    object-fit: cover;
+}
+.img-size{
+    max-height: 300px;
+    min-height: 250px;
+    object-fit: cover;
+}
+.img-size2{
+    object-fit: cover;
+    cursor: pointer;
+}
+.img-size3{
+    object-fit: cover;
+    cursor: pointer;
+    max-height: 400px;
+    min-height: 400px;
+}
+.img-size4{
+    object-fit: cover;
+    cursor: pointer;
+    max-height: 100px;
+    min-height: 100px;
+    width: 100px;
+}
+.img-size5{
+    object-fit: cover;
+    max-height: 250px;
+    min-height: 250px;
+    width: 250px;
+}
+.carousel-img {
+    max-height: 400px;
+    min-height: 400px;
+    width:100%;
+    object-fit: cover;
+}
+
+.bg-filtre{
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.modal-size {
+    width: 95%;
+}
+@media (min-width:576px){
+    .modal-size {
+        width: 90%;
+    }
+}
+
+@media (min-width:768px){
+    .modal-size {
+        width: 80%;
+    }
+}
+@media (min-width:992px){
+    .modal-size {
+        width: 70%;
+    }
+}
