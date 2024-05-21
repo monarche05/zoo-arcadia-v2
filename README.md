@@ -3,7 +3,9 @@
 ---
 
 ## Description
-Le site **ZOO ARCADIA v2** est un site d'entrainement pour une évaluation.
+**ZOO ARCADIA v2** est un site vitrine pour le Zoo Arcadia. Il permet au clients de voir les services, habitats, animaux et autre informations concernant celui-ci.
+Il possède une gestion par l'administration via des Dashboard pour chaque rôles. Ajout, suppression et mise à jour des différents secteurs.
+Les clients peuvent laisser des avis ou contacter le zoo. 
 
 ---
 
@@ -16,7 +18,7 @@ Le site **ZOO ARCADIA v2** est un site d'entrainement pour une évaluation.
 
 ---
 
-## Déploiement local
+# Déploiement local
 
 ---
 
@@ -144,22 +146,27 @@ Il ne vous reste plus qu'à lancer le server à l'aide de la commande:
     symfony server:start
 ```
 Si toute les oppération on était réalise avec succes vous devriez pouvoir accéder à l'application en local.
-Vous pouvez également vous connecter au site en utilisant les données suivante:
+Note: Pensez à lancer le serveur Redis.
 
 ---
 
-### Compte administrateur
-Mail:jean.paul@mail.com
-Mot de passe: admin
+### Administration
 
----
+Pour tester les fonctionnalitées lier à l'administration avec des comptes possédant différents rôles vous pouvez utiliser ceux qui sont créé par les Fixtures:
 
-### Compte employé
-Mail: john.doe@mail.com
-Mot de passe: employe
+Compte admin:
+```sh
+    Mail: jean.paul@mail.com
+    Mot de passe: admin
+```
+Compte employé:
+```sh
+    Mail: john.doe@mail.com
+    Mot de passe: employe
+```
 
----
-
-### Compte vétérinaire
-Mail: Janne.doe@mail.com
-Mot de passe: veterinaire
+Compte vétérinaire:
+```sh
+    Mail: Janne.doe@mail.com
+    Mot de passe: veterinaire
+```
