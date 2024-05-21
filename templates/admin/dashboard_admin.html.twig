@@ -10,7 +10,7 @@
 <div>
     <h4 class="py-4 px-3 my-3 bg-dark rounded">les plus visités</h4>
     <div class="d-flex flex-wrap">
-        {# {% set sortedAnimaux = animalCount|sort((a, b) => b.viewCount - a.viewCount) %}
+        {% set sortedAnimaux = animalCount|sort((a, b) => b.viewCount - a.viewCount) %}
         {% for animal in sortedAnimaux %}
             <div class="rounded d-flex flex-column align-items-center" style="width: 7rem;">
                 <img src="{{ '/img/'~ animal.image }}" class="card-img-top" style="height: 80px; width: 80px; object-fit: cover;" alt="{{ animal.name }}">
@@ -19,7 +19,7 @@
                     <p class="fs-5 p-0 m-0">{{ animal.viewCount }}</p>
                 </div>
             </div>
-        {% endfor %} #}
+        {% endfor %}
     </div>
 </div>
 <div>

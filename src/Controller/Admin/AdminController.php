@@ -26,7 +26,7 @@ use OpenApi\Attributes\Response as OAResponse;
 class AdminController extends AbstractDashboardController
 {
     private $dataService;
-    // private $redisService;
+    private $redisService;
 
     public function __construct(
         DataService $dataService,
@@ -34,7 +34,7 @@ class AdminController extends AbstractDashboardController
         )
     {
         $this->dataService = $dataService;
-        // $this->redisService = $redisService;
+        $this->redisService = $redisService;
     }
 
     #[Route('/admin', name: 'admin')]
@@ -72,28 +72,28 @@ class AdminController extends AbstractDashboardController
         
 
 
-        // // Récupérer les noms des animaux stockés dans Redis
-        // $animalNames = $this->redisService->getAnimalNames();
-        // // Récupérer les compteurs de vues pour chaque animal
-        // $animalViewCounts = $this->redisService->getAnimalViewCounts();
-        // // Combiner les noms des animaux et les compteurs de vues dans un tableau
-        // $animaux = [];
-        // foreach ($animalNames as $index => $name) {
-        //     $viewCount = $animalViewCounts['animal:' . $name] ?? 0; // Utiliser la clé complète de l'animal pour récupérer la valeur associée dans $animalViewCounts
+        // Récupérer les noms des animaux stockés dans Redis
+        $animalNames = $this->redisService->getAnimalNames();
+        // Récupérer les compteurs de vues pour chaque animal
+        $animalViewCounts = $this->redisService->getAnimalViewCounts();
+        // Combiner les noms des animaux et les compteurs de vues dans un tableau
+        $animaux = [];
+        foreach ($animalNames as $index => $name) {
+            $viewCount = $animalViewCounts['animal:' . $name] ?? 0; // Utiliser la clé complète de l'animal pour récupérer la valeur associée dans $animalViewCounts
 
-        //     // Rechercher l'animal correspondant dans le tableau $animals
-        //     $animal = array_filter($animals, function($item) use ($name) {
-        //         return $item->getName() === $name; // Utiliser la méthode getName() de l'objet Animals pour comparer les noms
-        //     });
-        //     $animal = reset($animal); // Récupérer le premier élément du tableau filtré
+            // Rechercher l'animal correspondant dans le tableau $animals
+            $animal = array_filter($animals, function($item) use ($name) {
+                return $item->getName() === $name; // Utiliser la méthode getName() de l'objet Animals pour comparer les noms
+            });
+            $animal = reset($animal); // Récupérer le premier élément du tableau filtré
 
-        //     // Ajouter l'image de l'animal au tableau $animaux
-        //     $animaux[] = [
-        //         'name' => $name,
-        //         'viewCount' => $viewCount,
-        //         'image' => $animal->getImg()[0], // Utiliser la méthode getImg() de l'objet Animals pour récupérer les images
-        //     ];
-        // }
+            // Ajouter l'image de l'animal au tableau $animaux
+            $animaux[] = [
+                'name' => $name,
+                'viewCount' => $viewCount,
+                'image' => $animal->getImg()[0], // Utiliser la méthode getImg() de l'objet Animals pour récupérer les images
+            ];
+        }
         if (in_array('ROLE_ADMIN', $currentUserRoles) && ($this->isGranted('ROLE_ADMIN'))) {
 
 
@@ -105,7 +105,7 @@ class AdminController extends AbstractDashboardController
                 'lastRapNourriture' => $lastRapNourriture,
                 'lastAvisClient' => $lastAvisClient,
                 'lastMailClient' => $lastMailClient,
-                // 'animalCount' => $animaux,
+                'animalCount' => $animaux,
                 //La liste de tout les animaux associé au nombre de visite de leur page (donnée de redis)
                 //Affichage du dernier rapport animal fait.
                 //Afficher le dernier commentaire habitat fait

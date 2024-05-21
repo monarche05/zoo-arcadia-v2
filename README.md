@@ -10,7 +10,9 @@ Le site **ZOO ARCADIA v2** est un site d'entrainement pour une évaluation.
 ## Fonctionnalités clés
 - L'administrateur du site peu, via un dashboard, gérer la totalité des utilisateurs, des services, des habitats, des animaux et des horaires.
 - Le Dashboard admin permet de voir le nombre de visite sur les animaux.
-- Les Dashboard: L'administrateur, les employés et les vétérinaire possède chacun des dashboard pouvant gérer leur différente taches.
+- Les Dashboard: L'administrateur, les employés et les vétérinaire possède chacun des dashboard pouvant gérer leurs différentes taches.
+- Un clients peu laisser un avis.
+- Un client peu contacter le Zoo.
 
 ---
 
@@ -79,6 +81,56 @@ Pour tester votre base de données et l'application vous pouvez ajouter les Data
 ```sh
     php bin/console d:f:l
 ```
+
+---
+
+### Ajout du server Redis
+
+Pour la fonctionnalité d'incrémentation du nombre de vue par animal il faut utiliser Redis.
+
+Pour windows:
+
+Vous devrez tout d'abord vous devrais installer WSL. Lancé votre invite de commande windows et taper la commande: 
+```sh
+    wsl --install
+```
+
+Une foi ceci installer vous devrais créer un "user" et un mot de passe pour votre distribution Linux WSL.
+Il vous seras proposé de les entrer directement après avoir terminer l'installation.
+Une foi que cela sera fait vous pourrez commencer l'installation de Redis.
+
+```sh
+    curl -fsSL https://packages.redis.io/gpg | sudo gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg
+
+    echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/redis.list
+
+    sudo apt-get update
+    sudo apt-get install redis
+```
+
+Enfin, démarrez le serveur Redis comme ceci :
+```sh
+    sudo service redis-server start
+```
+
+Se connecter à Redis
+Vous pouvez tester que votre serveur Redis est en cours d'exécution en vous connectant à la CLI Redis:
+
+```sh
+    redis-cli 
+    127.0.0.1:6379> ping
+```
+Si votre serveur et bien actif il devrais vous répondre PONG!
+
+Il ne vous resteras plus qu'à lier votre serveur Redis à votre application en ajoutant celui-ci dans le fichier .env: 
+```sh
+    URL_REDIS=redis://127.0.0.1:6379
+```
+Note: "127.0.0.1:6379" est l'adresse standard utiliser par Redis mais elle peu être modifier dans les redis.conf. Vérifier que ceci correspond à l'adresse de vôtre server Redis.
+
+
+Pour plus d'info sur la procédure d'installation de WSL je vous invite à visiter https://learn.microsoft.com/en-us/windows/wsl/install
+Pour plus d'information sur la procédure d'installation de Redis je vous invite à visiter https://redis.io/docs/latest/operate/oss_and_stack/install/install-redis/install-redis-on-windows/
 
 ---
 
