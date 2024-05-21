@@ -55,6 +55,9 @@ h2 {
 p{
     font-size: 14px;
 }
+#navTitle{
+    font-family: "Original Surfer", sans-serif;
+}
 @media (min-width: 576px) {
     p{
         font-size: 16px;
@@ -117,9 +120,6 @@ textarea {
     }
 }
 
-#img-bg-restauration {background-image: url(/img/food-7556198_1280.jpg);}
-#img-bg-visite {background-image: url(/img/tour-guide.jpg);}
-#img-bg-train {background-image: url(/img/train.jpg);}
 #img-bg-veterinaire {background-image: url(/img/veterinaire.jpg);}
 #img-bg-cairne {background-image: url(/img/cairne.jpg);}
 #img-bg-eco {background-image: url(/img/eco.jpg);}
@@ -137,30 +137,7 @@ textarea {
 #img-bg-eco,#img-bg-cairne,#img-bg-veterinaire {
     border-radius: 10px;
 }
-#img-ani-1{background-image: url(/img/suricat.jpg);}
-#img-ani-2{background-image: url(/img/elephant.jpg);}
-#img-ani-3{background-image: url(/img/croco.jpg);}
-#img-ani-4{background-image: url(/img/toucan.jpg);}
-#img-ani-5{background-image: url(/img/lion.jpg);}
-#img-ani-6{background-image: url(/img/gorille.jpg);}
-#img-ani-7{background-image: url(/img/tiger.jpg);}
-#img-ani-8{background-image: url(/img/giraff.jpg);}
 
-#img-ani-1,
-#img-ani-2,
-#img-ani-3,
-#img-ani-4,
-#img-ani-5,
-#img-ani-6,
-#img-ani-7,
-#img-ani-8 {
-    width:220px;
-    height: 220px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    border-radius: 10px;
-}
 #img-presentation-services{
     background-image: url(/img/presentation.jpg);
     width:250px;
@@ -180,30 +157,7 @@ textarea {
     border-radius: 10px;
 
 }
-#img-restauration1{
-    background-image: url(/img/burger.jpg);
-    z-index: 3;
-}
-#img-restauration2{
-    background-image: url(/img/vegan.jpg);
-    z-index: 2;    
-}
-#img-restauration3{
-    background-image: url(/img/restaurant.jpg);
-    z-index: 1;
-}
 
-#img-restauration1,
-#img-restauration2,
-#img-restauration3 {
-    width:450px;
-    height:270px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    border-radius: 10px;
-    box-shadow:rgba(0, 0, 0, 0.5) 5px 10px 10px 0;
-}
 
 #img-bg-savane,#img-bg-marais,#img-bg-jungle {
     background-position: center;
@@ -214,25 +168,7 @@ textarea {
     border-radius: 50%;
 }
 
-#img-visite {
-    background-image: url(/img/tour-guide.jpg);
-    width:650px;
-    height:370px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    border-radius: 10px;
-}
 
-#img-train {
-    background-image: url(/img/train.jpg);
-    width:650px;
-    height:370px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    border-radius: 10px;
-}
 .contener-size{
     margin: 200px;
     height: 100px;
@@ -324,5 +260,37 @@ textarea {
 @media (min-width:992px){
     .modal-size {
         width: 70%;
+    }
+    .navbar-custom {
+        transition: background-color 0.5s ease;
+      }
+      
+    .navbar-transparent {
+    background-color: rgba(0, 0, 0, 0.6) !important;
+    }
+}
+@media (max-width:992px){
+    
+    .test {
+        position: absolute;
+        top: 67px;
+        right: 0px;
+        padding: 60px;
+        background-color: #182D20;
+        border-radius: 0 0 0 10px;
+        transition: background-color 0.5s ease;
+    }
+    .navbar-custom {
+        transition: background-color 0.5s ease;
+      }
+      
+    .navbar-transparent {
+    background-color: rgba(0, 0, 0, 0.6) !important;
+    }
+    .navbar-custom-content {
+        transition: background-color 0.5s ease;
+    }
+    .navbar-transparent-content {
+        background-color: rgba(0, 0, 0, 0.6) !important;
     }
 }
