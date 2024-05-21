@@ -43,10 +43,10 @@ APP_ENV=dev
 APP_SECRET= "Votre clé secret"
 DATABASE_URL="mysql://"user":"mot de passe"@127.0.0.1:3306/"database"?serverVersion=10.11.2-MariaDB&charset=utf8mb4"
 MESSENGER_TRANSPORT_DSN=doctrine://default?auto_setup=0
-REDIS_URL=redis://localhost
+REDIS_URL=redis://127.0.0.1:6379
 ```
 
-Symfony génére automatiquement la clé secret à l'instalation mais dans nôtre cas vous devrais la générer.
+Symfony génére automatiquement la clé secret à l'instalation mais dans nôtre cas vous devrez la générer.
 Solution via php:
 
 créez un fichier secretGen.php avec le contenue suivant:
