@@ -99,16 +99,18 @@ class AdminController extends AbstractDashboardController
 
 
             return $this->render('admin/dashboard_admin.html.twig',[
-                'animals' => $animals,
                 'lastRapAnimals' => $lastRapAnimals,
                 'lastComHabitat' => $lastComHabitat,
                 'lastRapNourriture' => $lastRapNourriture,
                 'lastAvisClient' => $lastAvisClient,
                 'lastMailClient' => $lastMailClient,
                 'animalCount' => $animaux,
-                //La liste de tout les animaux associé au nombre de visite de leur page (donnée de redis)
+                //Affichage de la liste de tout les animaux associé au nombre de visite de leur page (donnée de redis)
                 //Affichage du dernier rapport animal fait.
-                //Afficher le dernier commentaire habitat fait
+                //Affichage du dernier rapport nourriture fait.
+                //Affichage du dernier commentaire habitat fait
+                //Affichage du dernier avis client fait
+                //Affichage du dernier mail client fait
             ]);
 
         } elseif (in_array('ROLE_EMPLOYE', $currentUserRoles) && ($this->isGranted('ROLE_EMPLOYE')))  {
