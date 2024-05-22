@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-
 use App\Entity\MailClients;
 use App\Form\ContactType;
 use App\Service\DataService;
@@ -17,6 +16,7 @@ use OpenApi\Attributes as OA;
 use OpenApi\Attributes\JsonContent;
 use OpenApi\Attributes\Property;
 use OpenApi\Attributes\Response as OAResponse;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 
 class ContactController extends AbstractController
 {
@@ -126,24 +126,21 @@ class ContactController extends AbstractController
 
         // génération de la date d'envoie de l'avis
         $date = new DateTime();
-        //enregistrement
+        // enregistrement
         $msgClient = new MailClients;
         $msgClient->setTitle($newTitre);
         $msgClient->setMail($newMail);
         $msgClient->setText($newMsg);
         $msgClient->setDate($date);
-        // $email = (new Email())
-        //     ->from('hello@example.com')
-        //     ->to('you@example.com')
-        //     //->cc('cc@example.com')
-        //     //->bcc('bcc@example.com')
-        //     //->replyTo('fabien@example.com')
-        //     //->priority(Email::PRIORITY_HIGH)
-        //     ->subject('Time for Symfony Mailer!')
-        //     ->text('Sending emails is fun again!')
-        //     ->html('<p>See Twig integration for better HTML integration!</p>');
-        // $mailer->send($email);
 
+        $mail = (new TemplatedEmail())
+        ->To('contact@demo.fr')
+        ->from($newMail)
+        ->subject($newTitre)
+        ->htmlTemplate('email/contact.html.twig')
+        ->context(['data' => $data]);
+        $mailer->send($mail);
+        
             try 
             {
                 $entityManager->persist($msgClient);

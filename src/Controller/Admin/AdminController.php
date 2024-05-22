@@ -61,6 +61,7 @@ class AdminController extends AbstractDashboardController
     {
         // Tableau des entités compléte
         $animals = $this->dataService->getAllAnimals();
+        $MailClient = $this->dataService->getAllMailsClients();
         // Derniers éléments des tableaux
         $lastComHabitat = $this->dataService->getLastComHabitat();
         $lastMailClient = $this->dataService->getLastMailClient();

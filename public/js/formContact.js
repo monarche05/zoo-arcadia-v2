@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
         contactBtn.addEventListener("click", function(event) {
             event.preventDefault();
             
-            //Sécurisation des données utilisateur
+            // Sécurisation des données utilisateur
             const titre = escapeHtml(contactTitre.value);
             const mail = escapeHtml(contactMail.value);
             const msg = escapeHtml(contactText.value);

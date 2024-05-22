@@ -2,8 +2,11 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\MailClients;
 use App\Entity\Roles;
 use App\Entity\User;
+use DateTime;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
@@ -15,13 +18,23 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Validator\Constraints\Choice;
 
 class UserCrudController extends AbstractCrudController
 {
-    
+    private $entityManager;
+    private $mailer;
+
+    public function __construct(EntityManagerInterface $entityManager, MailerInterface $mailer)
+    {
+        $this->entityManager = $entityManager;
+        $this->mailer = $mailer;
+    }
+
     public static function getEntityFqcn(): string
     {
         return User::class;
@@ -85,5 +98,43 @@ class UserCrudController extends AbstractCrudController
             ),
             BooleanField::new('is_verified'),
         ];
+    }
+
+    public function persistEntity(EntityManagerInterface $entityManager, $entityInstance): void
+    {
+         // Si l'entité est nouvellement créée
+    if (null === $entityInstance->getId()) {
+        // Enregistrer l'entité modifiée
+        parent::persistEntity($entityManager, $entityInstance);
+
+        // Récupérer les informations sur l'utilisateur créé
+        $userEmail = $entityInstance->getMail();
+
+        // Envoyer un e-mail à l'utilisateur créé
+        $this->sendResponseEmail($this->mailer, $userEmail);
+    } else {
+        // Si l'entité est mise à jour, ne rien faire ou effectuer d'autres actions si nécessaire
+        parent::persistEntity($entityManager, $entityInstance);
+    }
+    }
+
+    private function sendResponseEmail(MailerInterface $mailer, $userEmail): void
+    {
+
+        $date = new DateTime();
+        // enregistrement
+        $newUser = new User();
+        $newUser->setMail($userEmail);
+
+        $mail = (new TemplatedEmail())
+        ->To($newUser->getMail())
+        ->from('contact@demo.fr')
+        ->subject('Ajout de compte')
+        ->htmlTemplate('email/creatCompte.html.twig')
+        ->context([
+            'data' => $newUser,
+            'date' => $date
+        ]);
+        $mailer->send($mail);
     }
 }

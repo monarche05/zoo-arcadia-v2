@@ -43,6 +43,7 @@ APP_ENV=dev
 APP_SECRET= "Votre clé secret"
 DATABASE_URL="mysql://"user":"mot de passe"@127.0.0.1:3306/"database"?serverVersion=10.11.2-MariaDB&charset=utf8mb4"
 MESSENGER_TRANSPORT_DSN=doctrine://default?auto_setup=0
+MAILER_DSN=smtp://localhost:1025
 REDIS_URL=redis://127.0.0.1:6379
 ```
 
@@ -135,6 +136,22 @@ Pour plus d'info sur la procédure d'installation de WSL je vous invite à visit
 Pour plus d'information sur la procédure d'installation de Redis je vous invite à visiter https://redis.io/docs/latest/operate/oss_and_stack/install/install-redis/install-redis-on-windows/
 
 ---
+
+### Ajout du service de mail
+
+Pour gérer l'utilisation des mail et pouvoir tester sans difficulté la distribution de ceux-ci nous allons utiliser 
+Mailpit. Rendez vous sur ce lien pour télécharger la version qui vous correspond: 
+
+https://github.com/axllent/mailpit/releases/tag/v1.18.3
+
+- Décompressé le zip et mettez le fichier "mailpit.exe" dans le /bin de l'application.
+- Ouvrir une invite de commande, vous placer dans le répertoire /bin de l'application et à éxécuter "mailpit.exe".
+
+Note: Vous pouvais également faire glisser le fichier "mailpit.exe" directement sur l'invite de commande pour ajouter le path  puis appuyer sur entré.
+
+Voilà le service est en place, vous pouvez y accéder par défaut sur l'adresse: http://localhost:8025/
+
+Pour plus d'information voici la documentation: https://mailpit.axllent.org/docs/install/
 
 ## Finalisation
 Il se peu que vous ayez besoin de réinstaller le webpack-encore à l'aide de cet comande: 

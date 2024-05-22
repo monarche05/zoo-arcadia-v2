@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajout de compte</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <h2>Ajout de compte</h2>
+    <div class="container alert alert-light">
+        <p>
+            Bonjour,Nous vous informons qu'un compte a été créé pour vous sur notre site. 
+            Pour des raisons de sécurité, le mot de passe associé à ce compte n'est pas inclus dans cet e-mail.
+            Veuillez contacter l'administrateur du site pour recevoir votre mot de passe et accéder à votre compte.
+            <br><br>
+            Merci.
+        </p>
+        <div class="alert alert-info">
+            <strong>Identifiants:</strong> <br>
+            <strong>Email:</strong> {{ data.mail }} .
+        </div>
+    </div>
+</body>
+</html>
